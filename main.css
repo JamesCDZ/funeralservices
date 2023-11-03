@@ -603,6 +603,8 @@ form .form-row.form-row__flex span:before {
     content: "Leave your email or phone number, or both";
   }
 }
+
+
 form .select-wrapper {
   text-align: left;
 }
@@ -678,18 +680,45 @@ form .field-wrap .selectric .label {
   align-items: center;
 }
 form .field-wrap label:not(.error).textarea-label,
-form .field-wrap .selectric .label.textarea-label {
+form .field-wrap .selectric .label.textarea-label,
+textarea:not(:focus) {
   transform: none;
   top: 20px;
 }
-form .field-wrap input:focus ~ label:not(.error),
+/* form .field-wrap input:focus ~ label:not(.error),
 form .field-wrap textarea:focus ~ label.textarea-label,
 form .field-wrap .is-completed ~ label:not(.error) {
   transform: translateY(0);
   top: -8px;
   font-size: 12px !important;
   line-height: 12px;
+} */
+
+input:focus ~ label:not(.error),
+input:valid ~ label:not(.error){
+    transform: translateY(0);
+    top: -8px;
+    font-size: 12px !important;
+    line-height: 12px;
 }
+
+
+textarea:focus ~ label:not(.error),
+textarea:valid ~ label:not(.error){
+    transform: translateY(0);
+    top: -8px;
+    font-size: 12px !important;
+    line-height: 12px;
+}
+
+textarea:not(:focus):focus ~ label:not(.error){
+    transform: none;
+    top: 20px;
+}
+
+
+
+
 form .field-wrap .selectric {
   border-radius: 3px;
 }
@@ -4275,7 +4304,7 @@ section.hero .shadow {
   }
 }
 section.hero > .container {
-  margin-top: 13.4%;
+  margin-top: 7.4%;
   z-index: 1;
 }
 @media (max-width: 1440px) {
@@ -5339,7 +5368,7 @@ div.navbar ul.links {
   margin: 0;
   padding: 0;
   list-style: none;
-  opacity: 0;
+  opacity: 1;
 }
 div.navbar ul.links li {
   padding: 32px 30px;
@@ -7366,3 +7395,45 @@ section.testimonials .city {
 .video mediaelementwrapper {
   display: block;
 }
+
+div.navbar .toggle{
+    opacity: 1;
+}
+
+div.navbar ul.links {
+    display: flex;
+    justify-content: flex-end;
+    overflow: hidden;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    justify-items: center;
+    justify-self: center;
+    opacity: 1;
+    width: 100%;
+    align-items: center;
+    display: none;
+}
+
+.toggled{
+    display: flex !important;
+}
+
+@media screen and (min-width: 992px) {
+    div.navbar .toggle{
+        opacity: 0;
+    }
+
+    div.navbar ul.links {
+        display: flex;
+        justify-content: flex-end;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        opacity: 1;
+        flex-direction: row;
+        width: auto;
+    }
+  }
